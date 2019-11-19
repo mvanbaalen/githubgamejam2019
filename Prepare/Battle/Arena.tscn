@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 300.0
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+as_normalmap = true
+noise = SubResource( 2 )
+
+[node name="Arena" type="CenterContainer"]
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 3.0
+margin_bottom = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0, 1, 0.25098, 1 )
+texture = SubResource( 3 )
+polygon = PoolVector2Array( -242.224, -170.989, -130.322, -127.565, -178.757, -234.456, -110.28, -277.881, 25.0049, -299.594, 170.311, -244.477, 265.511, -135.916, 293.904, 37.7834, 215.406, 209.812, 33.3558, 293.321, -101.929, 279.96, -203.81, 221.504, -268.947, 124.633, -299.011, 21.0816, -292.33, -65.7679, -270.617, -129.235 )

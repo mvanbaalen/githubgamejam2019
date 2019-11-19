@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Prepare/return_to_title.gd" type="Script" id=1]
+[ext_resource path="res://img/pond-texture-8.png" type="Texture" id=2]
+[ext_resource path="res://Prepare/Battle/Log.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prepare/Battle/Arena.tscn" type="PackedScene" id=4]
+
+[node name="Battle" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color( 0.592157, 0, 0.556863, 1 )
+margin_right = 1279.0
+margin_bottom = 723.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="PlayerLog" parent="." instance=ExtResource( 3 )]
+
+[node name="EnemyLog" parent="." instance=ExtResource( 3 )]
+margin_left = 1077.27
+margin_top = 1.6702
+margin_right = 1277.27
+margin_bottom = 721.67
+
+[node name="Arena" parent="." instance=ExtResource( 4 )]
+margin_left = 635.356
+margin_top = 365.591
+margin_right = 635.356
+margin_bottom = 365.591

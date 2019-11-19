@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://img/log.png" type="Texture" id=1]
+[ext_resource path="res://Prepare/Battle/FrogHUD.tscn" type="PackedScene" id=2]
+
+[node name="Log" type="CenterContainer"]
+modulate = Color( 1, 1, 1, 0.890196 )
+margin_right = 200.0
+margin_bottom = 720.0
+
+[node name="LogTexture" type="TextureRect" parent="."]
+modulate = Color( 0.360784, 0.360784, 0.360784, 0.870588 )
+margin_right = 200.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 200, 720 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 200, 720 )
+rect_pivot_offset = Vector2( 320, 450 )
+custom_constants/separation = 120
+
+[node name="FrogHUD1" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 200.0
+margin_bottom = 0.0
+
+[node name="FrogHUD2" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 120.0
+margin_right = 200.0
+margin_bottom = 120.0
+
+[node name="FrogHUD3" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 240.0
+margin_right = 200.0
+margin_bottom = 240.0
+
+[node name="FrogHUD4" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 360.0
+margin_right = 200.0
+margin_bottom = 360.0
+
+[node name="FrogHUD5" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 480.0
+margin_right = 200.0
+margin_bottom = 480.0
+
+[node name="FrogHUD6" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 600.0
+margin_right = 200.0
+margin_bottom = 600.0
