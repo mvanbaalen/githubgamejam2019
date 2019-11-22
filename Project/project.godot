@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Title Screen"
+config/name="Pyokimon"
 run/main_scene="res://title_screen/TitleScreen.tscn"
 config/icon="res://icon.png"
 

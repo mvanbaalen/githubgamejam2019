@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Prepare/Prepare.gd" type="Script" id=1]
 [ext_resource path="res://title_screen/fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://title_screen/TitleLabel.gd" type="Script" id=3]
 [ext_resource path="res://title_screen/buttons/FrogButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fade_in/FadeIn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://anim/fade_in/FadeIn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://title_screen/buttons/BattleButton.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -98,4 +99,10 @@ margin_right = 1508.0
 margin_bottom = 560.0
 
 [node name="FadeIn" parent="." instance=ExtResource( 5 )]
+
+[node name="BattleButton" parent="." instance=ExtResource( 6 )]
+margin_left = 886.076
+margin_top = 625.879
+margin_right = 1246.08
+margin_bottom = 685.879
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

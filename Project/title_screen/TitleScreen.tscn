@@ -7,7 +7,7 @@
 [ext_resource path="res://title_screen/buttons/NewGameButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://title_screen/buttons/ContinueButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=7]
-[ext_resource path="res://fade_in/FadeIn.tscn" type="PackedScene" id=8]
+[ext_resource path="res://anim/fade_in/FadeIn.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
