@@ -1,27 +1,112 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Prepare/Battle/frog/Frog.gd" type="Script" id=1]
-[ext_resource path="res://img/frogtopdown.png" type="Texture" id=2]
+[ext_resource path="res://img/frog_frontlegs.png" type="Texture" id=2]
+[ext_resource path="res://img/frog_frontlegs_walk1.png" type="Texture" id=3]
+[ext_resource path="res://img/frog_frontlegs_walk2.png" type="Texture" id=4]
+[ext_resource path="res://img/frog_backlegs.png" type="Texture" id=5]
+[ext_resource path="res://img/frog_body.png" type="Texture" id=6]
+[ext_resource path="res://img/frog_eyes.png" type="Texture" id=7]
+[ext_resource path="res://img/frog_eyes_blink1.png" type="Texture" id=8]
+[ext_resource path="res://img/frog_eyes_blink2.png" type="Texture" id=9]
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float period = 0.1;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE,UV);
+	COLOR.g -= 0.2*sin(TIME);
+	//COLOR.g = COLOR.g-COLOR.b;
+}
+
+void vertex() {
+	float x = (UV.x-0.5);
+	float y = (UV.y-0.5);
+	VERTEX.x += x * 5.0*sin(TIME*2.0);
+	VERTEX.y += y * 5.0*sin(TIME*2.0);
+	VERTEX.y += sin(y*10.0 * TIME) * 5.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/period = 0.1
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "default",
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Walk",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
+} ]
+
+[sub_resource type="CircleShape2D" id=5]
 radius = 100.0
 
 [node name="Frog" type="KinematicBody2D"]
+material = SubResource( 7 )
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="FrontLegsSprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 1 )
+animation = "Walk"
+frame = 2
+playing = true
+
+[node name="BackLegsSprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
+rotation = -1.5708
+frames = SubResource( 2 )
+animation = "Idle"
+
+[node name="BodySprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
+rotation = -1.5708
+frames = SubResource( 3 )
+animation = "Idle"
+
+[node name="EyesSprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
+rotation = -1.5708
+frames = SubResource( 4 )
+animation = "Idle"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
-
+visible = false
+shape = SubResource( 5 )
