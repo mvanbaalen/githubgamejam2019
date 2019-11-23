@@ -160,4 +160,5 @@ margin_right = 568.0
 margin_bottom = 670.0
 custom_fonts/font = ExtResource( 5 )
 text = "Back"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

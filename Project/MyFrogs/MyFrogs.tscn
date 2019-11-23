@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://MyFrogs/Frog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prepare/Battle/frog/Frog.tscn" type="PackedScene" id=1]
 
 [node name="MyFrogs" type="Node"]
 
@@ -21,3 +21,4 @@ position = Vector2( 681.435, 516.087 )
 
 [node name="Frog6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1027.16, 527.778 )
+
