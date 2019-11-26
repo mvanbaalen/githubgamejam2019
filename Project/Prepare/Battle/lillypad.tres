@@ -12,3 +12,4 @@ seamless = true
 as_normalmap = true
 bump_strength = 23.4
 noise = SubResource( 1 )
+
