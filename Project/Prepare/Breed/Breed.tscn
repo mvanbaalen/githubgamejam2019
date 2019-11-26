@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Prepare/return_to_title.gd" type="Script" id=1]
+[ext_resource path="res://Prepare/Breed/breed.gd" type="Script" id=1]
 [ext_resource path="res://title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=2]
 [ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Prepare/FrogProfile.tscn" type="PackedScene" id=4]
@@ -51,5 +51,4 @@ margin_left = 440.928
 margin_top = 167.018
 margin_right = 793.928
 margin_bottom = 606.018
-
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

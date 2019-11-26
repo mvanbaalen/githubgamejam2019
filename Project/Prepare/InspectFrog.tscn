@@ -1,73 +1,80 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://title_screen/buttons/MenuButton.gd" type="Script" id=1]
-[ext_resource path="res://title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://img/noise_styleboxtexture.tres" type="StyleBox" id=1]
+[ext_resource path="res://title_screen/buttons/MenuButton.gd" type="Script" id=2]
+[ext_resource path="res://title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1033.0
+margin_bottom = -504.0
 rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Choices" type="VBoxContainer" parent="."]
+margin_right = 360.0
+margin_bottom = 188.0
 
-[node name="StatsButton" type="Button" parent="VBoxContainer"]
+[node name="StatsButton" type="Button" parent="Choices"]
 margin_right = 360.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 360, 60 )
+custom_styles/focus = ExtResource( 1 )
 flat = true
-script = ExtResource( 1 )
-scene_to_load = "res://game/Options.tscn"
+script = ExtResource( 2 )
+scene_to_load = "res://Prepare/Stats/Stats.tscn"
 
-[node name="Label" type="Label" parent="VBoxContainer/StatsButton"]
+[node name="Label" type="Label" parent="Choices/StatsButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 2
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 1, 0.596078, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Stats"
 uppercase = true
 
-[node name="BreedButton" type="Button" parent="VBoxContainer"]
+[node name="BreedButton" type="Button" parent="Choices"]
+editor/display_folded = true
 margin_top = 64.0
 margin_right = 360.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 360, 60 )
+custom_styles/focus = ExtResource( 1 )
 flat = true
-script = ExtResource( 1 )
-scene_to_load = "res://game/Options.tscn"
+script = ExtResource( 2 )
+scene_to_load = "res://Prepare/Breed/Breed.tscn"
 
-[node name="Label" type="Label" parent="VBoxContainer/BreedButton"]
+[node name="Label" type="Label" parent="Choices/BreedButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 2
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 1, 0.596078, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Breed"
 uppercase = true
 
-[node name="CroakButton" type="Button" parent="VBoxContainer"]
+[node name="CroakButton" type="Button" parent="Choices"]
+editor/display_folded = true
 margin_top = 128.0
 margin_right = 360.0
 margin_bottom = 188.0
 rect_min_size = Vector2( 360, 60 )
+custom_styles/focus = ExtResource( 1 )
 flat = true
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 scene_to_load = "res://game/Options.tscn"
 
-[node name="Label" type="Label" parent="VBoxContainer/CroakButton"]
+[node name="Label" type="Label" parent="Choices/CroakButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 2
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 1, 0.596078, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Croak"
 uppercase = true
-
