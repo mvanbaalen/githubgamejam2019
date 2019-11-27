@@ -15,6 +15,13 @@ func closest_enemy(asking_frog):
 		if asking_frog.team != frog.team:
 			var distance = asking_frog.position.distance_to(frog.position)
 			if closest_distance == null or distance < closest_distance:
-				distance = closest_distance
+				closest_distance = distance
 				closest_enemy = frog
 	return closest_enemy
+	
+func check_victory():
+	var check_team = get_child(0).team
+	for frog in get_children():
+		if frog.team != check_team:
+			return false
+	return check_team

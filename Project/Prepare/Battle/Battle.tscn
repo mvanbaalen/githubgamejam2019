@@ -53,20 +53,20 @@ script = ExtResource( 5 )
 
 [node name="GoodFrog" parent="Arena/Frogs" instance=ExtResource( 6 )]
 modulate = Color( 0.517647, 1, 0.490196, 1 )
-position = Vector2( 873.149, 346.206 )
+position = Vector2( 853.764, 364.299 )
 
 [node name="GoodFrog2" parent="Arena/Frogs" instance=ExtResource( 6 )]
 modulate = Color( 0.517647, 1, 0.490196, 1 )
-position = Vector2( 588.831, 547.813 )
+position = Vector2( 640.525, 577.537 )
 
 [node name="BadFrog" parent="Arena/Frogs" instance=ExtResource( 6 )]
 modulate = Color( 1, 0.470588, 0.470588, 1 )
-position = Vector2( 422.117, 351.375 )
+position = Vector2( 497.074, 368.176 )
 team = 1
 
 [node name="BadFrog2" parent="Arena/Frogs" instance=ExtResource( 6 )]
 modulate = Color( 1, 0.501961, 0.501961, 1 )
-position = Vector2( 636.648, 353.96 )
+position = Vector2( 648.279, 370.761 )
 team = 1
 
 [node name="StartButton" type="Button" parent="."]
@@ -75,4 +75,5 @@ margin_top = 4.0
 margin_right = 317.0
 margin_bottom = 60.0
 text = "Start"
+
 [connection signal="pressed" from="StartButton" to="Arena" method="_on_StartButton_pressed"]
