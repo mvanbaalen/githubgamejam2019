@@ -58,7 +58,6 @@ text = "Breed"
 uppercase = true
 
 [node name="CroakButton" type="Button" parent="Choices"]
-editor/display_folded = true
 margin_top = 128.0
 margin_right = 360.0
 margin_bottom = 188.0

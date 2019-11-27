@@ -3,7 +3,11 @@
 [ext_resource path="res://title_screen/buttons/Button.tscn" type="PackedScene" id=1]
 
 [node name="BattleButton" instance=ExtResource( 1 )]
+margin_right = 437.0
+margin_bottom = 75.0
 scene_to_load = "res://Prepare/Battle/Battle.tscn"
 
 [node name="Label" parent="." index="0"]
-text = "Battle!"
+margin_left = 107.304
+margin_right = -103.696
+text = "battle!"

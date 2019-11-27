@@ -4,6 +4,7 @@ var scene_path_to_load
 const InspectFrog = preload("res://Prepare/InspectFrog.tscn")
 const MyFrogs = preload("res://MyFrogs/MyFrogs.tscn")
 const FrogButton = preload("res://title_screen/buttons/FrogButton.tscn")
+#const Player = preload("res://MyFrogs/Player.tscn")
 
 func _ready():
 	for frog in Player.frogs:
@@ -12,6 +13,7 @@ func _ready():
 		$FrogGrid.add_child(inst)
 	$FrogGrid.get_child(0).grab_focus()
 	$BattleButton.connect("pressed", self, "_on_Button_pressed",[$BattleButton.scene_to_load])
+	$RetireButton.connect("pressed", self, "_on_Button_pressed",[$RetireButton.scene_to_load])
 		
 func _on_Button_pressed(scene_to_load):
 	$FadeIn.show()

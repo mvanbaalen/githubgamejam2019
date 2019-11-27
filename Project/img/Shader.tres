@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float period = 0.1;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE,UV);
+	if(UV.y>0.8)
+	{
+		COLOR.a = max(COLOR.a-(UV.y),0.0);
+	}
+	//COLOR.g = COLOR.g-COLOR.b;
+}
+
+void vertex() {
+	VERTEX.y +=8.0*sin(TIME)*(1.0-UV.y);
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/period = 0.1
