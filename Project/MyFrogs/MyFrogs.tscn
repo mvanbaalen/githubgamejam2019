@@ -21,3 +21,4 @@ position = Vector2( 681.435, 516.087 )
 
 [node name="Frog6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1027.16, 527.778 )
+

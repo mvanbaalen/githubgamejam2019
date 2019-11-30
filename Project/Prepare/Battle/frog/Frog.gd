@@ -89,3 +89,6 @@ func become_undizzy():
 func fall():
 	print(name + " has fallen!")
 	queue_free()
+
+func _on_Frog_input_event(viewport, event, shape_idx):
+	print(str(event))

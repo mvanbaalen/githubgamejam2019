@@ -18,6 +18,7 @@ static func get_random_name() -> String:
 
 var name = ""
 
+var level = 1
 var power = 0
 var speed = 0
 var size = 10

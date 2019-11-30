@@ -57,6 +57,7 @@ height = 98.0
 ]]
 material = ExtResource( 1 )
 scale = Vector2( 0.5, 0.5 )
+input_pickable = true
 script = ExtResource( 2 )
 
 [node name="FrontLegsSprite" type="AnimatedSprite" parent="."]
@@ -64,7 +65,6 @@ use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 3
 playing = true
 
 [node name="BackLegsSprite" type="AnimatedSprite" parent="."]
@@ -84,7 +84,7 @@ use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 4 )
 animation = "Idle"
-frame = 7
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -92,3 +92,4 @@ position = Vector2( -3.75, -2.88 )
 rotation = 1.5708
 shape = SubResource( 5 )
 
+[connection signal="input_event" from="." to="." method="_on_Frog_input_event"]

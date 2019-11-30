@@ -62,4 +62,5 @@ margin_right = 1246.08
 margin_bottom = 685.879
 
 [node name="RetireButton" parent="." instance=ExtResource( 6 )]
+
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
