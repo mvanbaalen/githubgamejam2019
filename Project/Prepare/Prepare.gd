@@ -1,6 +1,7 @@
 extends Control
 
 var scene_path_to_load
+var bgm = load('res://audio/pyoko_prepare.ogg')
 const InspectFrog = preload("res://Prepare/InspectFrog.tscn")
 const FrogStats = preload("res://Prepare/FrogDisplay.tscn")
 #const Player = preload("res://MyFrogs/Player.tscn")
@@ -21,10 +22,13 @@ func _ready():
 	$FrogStats/GridContainer.get_child(0).grab_focus()
 	$BattleButton.connect("pressed", self, "_on_Button_pressed",[$BattleButton.scene_to_load])
 	$RetireButton.connect("pressed", self, "_on_Button_pressed",[$RetireButton.scene_to_load])
+	AudioPlayer.change_song(bgm)
 		
 func _on_Button_pressed(scene_to_load):
+	AudioPlayer.playSFX(load('res://audio/pyoko_SFX3.wav'))
 	$FadeIn.show()
 	$FadeIn.fade_in()
+	AudioPlayer.music_fade_out()
 	scene_path_to_load = scene_to_load
 
 func _on_FrogButton_pressed(frog):

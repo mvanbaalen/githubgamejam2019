@@ -1,25 +1,25 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var bgm = load('res://audio/pyoko_croak.ogg')
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var frog = Player.frog_to_check
 	find_node("FrogProfile").set_frog(Player.frog_to_check)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	AudioPlayer.change_song(bgm)
 
 func _on_Croak_Button_pressed():
 	# TODO: Animate?
+	AudioPlayer.playSFX(load('res://audio/pyoko_SFX4.wav'))
 	Player.frogs.erase(Player.frog_to_check)
-	get_tree().change_scene("res://Prepare/Prepare.tscn")
+	$FadeIn.show()
+	$FadeIn.fade_in()
+	AudioPlayer.music_fade_out()
 	# TODO: You can't croak your only frog!
 
-
-func _on_Back_Button_pressed():
+func _on_Back_Button_pressed():	
+	$FadeIn.show()
+	$FadeIn.fade_in()
+	AudioPlayer.music_fade_out()
+	
+func _on_FadeIn_fade_finished():
+	$FadeIn.hide()
 	get_tree().change_scene("res://Prepare/Prepare.tscn")

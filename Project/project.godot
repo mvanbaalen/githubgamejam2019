@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Player="*res://shared/player.gd"
+AudioPlayer="*res://audio/AudioPlayer.tscn"
 
 [display]
 

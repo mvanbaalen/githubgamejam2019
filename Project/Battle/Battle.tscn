@@ -5,7 +5,7 @@
 [ext_resource path="res://Battle/Log.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Battle/Arena.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Battle/FrogsList.gd" type="Script" id=5]
-[ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=6]
+[ext_resource path="res://anim/fade_in/FadeIn.tscn" type="PackedScene" id=6]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 1
@@ -58,7 +58,6 @@ anchor_right = 0.5
 margin_left = -56.0
 margin_right = 62.0
 margin_bottom = 60.0
-custom_fonts/font = ExtResource( 6 )
 text = "Start"
 
 [node name="NoPlace" type="Area2D" parent="StartButton"]
@@ -67,4 +66,6 @@ text = "Start"
 position = Vector2( 58, 30 )
 shape = SubResource( 3 )
 
+[node name="FadeIn" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

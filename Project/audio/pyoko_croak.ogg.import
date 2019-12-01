@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pyoko_croak.ogg-fd88137c78ef0946079e643df3d1dcc0.oggstr"
+
+[deps]
+
+source_file="res://audio/pyoko_croak.ogg"
+dest_files=[ "res://.import/pyoko_croak.ogg-fd88137c78ef0946079e643df3d1dcc0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

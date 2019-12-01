@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pyoko_retire.ogg-ec9696413f15813781861bda71f0c6eb.oggstr"
+
+[deps]
+
+source_file="res://audio/pyoko_retire.ogg"
+dest_files=[ "res://.import/pyoko_retire.ogg-ec9696413f15813781861bda71f0c6eb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

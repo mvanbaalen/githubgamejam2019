@@ -12,6 +12,7 @@ const LEVELS = {
 	3: {Vector2(635, 90): 1, Vector2(900, 365): 1, Vector2(635, 630): 1}
 }
 
+var bgm = load("res://audio/pyoko_battle.ogg")
 var FrogActor = preload("res://Battle/frog/Frog.tscn")
 
 var current_state = BattleState.PREPARE
@@ -49,6 +50,8 @@ func _ready():
 #				print ("Make a new frog at " + str(new_position))
 				
 	$EnemyLog.load_from_frog_list(enemy_frogs)
+	AudioPlayer.change_song(bgm)
+
 		
 func make_enemy_frog(new_position):
 	var new_frog = abstract_frog.new()
@@ -69,11 +72,9 @@ func victory(team):
 		Player.level += 1
 	else:
 		pass # TODO add to losses or something
-	get_tree().change_scene("res://Prepare/Prepare.tscn")
-
-func _on_Button_pressed():
-	get_tree().change_scene('res://title_screen/TitleScreen.tscn')
-
+	$FadeIn.show()
+	$FadeIn.fade_in()
+	AudioPlayer.music_fade_out()
 
 func _on_StartButton_pressed():
 	for frog in $Arena/Frogs.get_children():
@@ -83,3 +84,7 @@ func _on_StartButton_pressed():
 		frog.start_battle()
 		current_state = BattleState.FIGHT
 		$StartButton.queue_free()
+
+func _on_FadeIn_fade_finished():
+	$FadeIn.hide()
+	get_tree().change_scene("res://Prepare/Prepare.tscn")
