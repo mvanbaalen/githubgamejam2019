@@ -9,6 +9,7 @@ margin_bottom = 439.0
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+editor/display_folded = true
 margin_right = 353.0
 margin_bottom = 360.0
 
@@ -29,4 +30,3 @@ custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Frog Name"
 align = 1
-
