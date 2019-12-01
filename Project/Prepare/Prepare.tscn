@@ -40,7 +40,7 @@ custom_colors/font_outline_modulate = Color( 0, 0.215686, 0.0705882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0.756863, 0.294118, 1 )
 custom_constants/shadow_offset_x = 10
 custom_constants/shadow_offset_y = 10
-text = "PYOKIMON"
+text = "PYOKOMON"
 script = ExtResource( 3 )
 
 [node name="FrogGrid" type="GridContainer" parent="."]
@@ -60,6 +60,7 @@ margin_left = 886.076
 margin_top = 625.879
 margin_right = 1246.08
 margin_bottom = 685.879
+scene_to_load = "res://Battle/Battle.tscn"
 
 [node name="RetireButton" parent="." instance=ExtResource( 6 )]
 

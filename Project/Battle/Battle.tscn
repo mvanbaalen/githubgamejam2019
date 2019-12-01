@@ -1,11 +1,12 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Prepare/Battle/Battle.gd" type="Script" id=1]
-[ext_resource path="res://Prepare/Battle/Background.gd" type="Script" id=2]
-[ext_resource path="res://Prepare/Battle/Log.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prepare/Battle/Arena.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prepare/Battle/FrogsList.gd" type="Script" id=5]
-[ext_resource path="res://Prepare/Battle/frog/Frog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Battle/Battle.gd" type="Script" id=1]
+[ext_resource path="res://Battle/Background.gd" type="Script" id=2]
+[ext_resource path="res://Battle/Log.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Battle/Arena.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Battle/FrogsList.gd" type="Script" id=5]
+[ext_resource path="res://Battle/frog/Frog.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 1

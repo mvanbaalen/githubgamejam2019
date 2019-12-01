@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Prepare/Battle/Arena.gd" type="Script" id=1]
-[ext_resource path="res://Prepare/Battle/arena_area.gd" type="Script" id=2]
-[ext_resource path="res://Prepare/Battle/lillypad.tres" type="Texture" id=3]
-[ext_resource path="res://Prepare/Battle/LillypadShape.gd" type="Script" id=4]
+[ext_resource path="res://Battle/Arena.gd" type="Script" id=1]
+[ext_resource path="res://Battle/arena_area.gd" type="Script" id=2]
+[ext_resource path="res://Battle/lillypad.tres" type="Texture" id=3]
+[ext_resource path="res://Battle/LillypadShape.gd" type="Script" id=4]
+
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 300.0

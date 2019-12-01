@@ -1,6 +1,6 @@
 extends CenterContainer
 
-var hud_scene = preload("res://Prepare/Battle/FrogHUD.tscn")
+var hud_scene = preload("res://Battle/FrogHUD.tscn")
 
 # Declare member variables here. Examples:
 # var a = 2

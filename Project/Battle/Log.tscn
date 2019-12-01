@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Prepare/Battle/Log.gd" type="Script" id=1]
+[ext_resource path="res://Battle/Log.gd" type="Script" id=1]
 [ext_resource path="res://img/log.png" type="Texture" id=2]
+
 
 [node name="Log" type="CenterContainer"]
 modulate = Color( 1, 1, 1, 0.890196 )
