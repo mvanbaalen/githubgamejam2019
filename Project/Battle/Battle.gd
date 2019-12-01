@@ -1,8 +1,11 @@
 extends Node
 
+enum BattleState {PREPARE, FIGHT, END}
 enum Team {PLAYER, ENEMY} # Duplicated? Use Global?
 
 var FrogActor = preload("res://Battle/frog/Frog.tscn")
+
+var current_state = BattleState.PREPARE
 
 func _ready():
 	$PlayerLog.load_from_frog_list(Player.frogs)
@@ -26,3 +29,13 @@ func victory(team):
 
 func _on_Button_pressed():
 	get_tree().change_scene('res://title_screen/TitleScreen.tscn')
+
+
+func _on_StartButton_pressed():
+	for frog in $Arena/Frogs.get_children():
+		if !frog.ready_to_fight():
+			return
+	for frog in $Arena/Frogs.get_children():
+		frog.start_battle()
+		current_state = BattleState.FIGHT
+		$StartButton.queue_free()

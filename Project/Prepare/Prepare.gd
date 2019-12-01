@@ -2,17 +2,18 @@ extends Control
 
 var scene_path_to_load
 const InspectFrog = preload("res://Prepare/InspectFrog.tscn")
-const MyFrogs = preload("res://MyFrogs/MyFrogs.tscn")
-const FrogButton = preload("res://title_screen/buttons/FrogButton.tscn")
+const FrogStats = preload("res://Prepare/FrogDisplay.tscn")
 #const Player = preload("res://MyFrogs/Player.tscn")
 
 func _ready():
 	for frog in Player.frogs:
-		var frog_button = FrogButton.instance()
+		var frog_stats = FrogStats.instance()
+		var frog_button = frog_stats.get_node("FrogButton")
 		frog_button.connect("pressed", self, "_on_FrogButton_pressed", [frog_button])
 		frog_button.abstract_frog_instance = frog
-		$FrogGrid.add_child(frog_button)
-	$FrogGrid.get_child(0).grab_focus()
+		frog_stats.get_node("NameLabel").text = frog.name
+		$FrogStats/GridContainer.add_child(frog_stats)
+	$FrogStats/GridContainer.get_child(0).grab_focus()
 	$BattleButton.connect("pressed", self, "_on_Button_pressed",[$BattleButton.scene_to_load])
 	$RetireButton.connect("pressed", self, "_on_Button_pressed",[$RetireButton.scene_to_load])
 		

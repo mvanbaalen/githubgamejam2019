@@ -19,6 +19,9 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
@@ -26,6 +29,9 @@ margin_left = 2.33276
 margin_right = 1282.33
 margin_bottom = 717.0
 color = Color( 0.788235, 0.439216, 0.643137, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="VersionLabel2" type="Label" parent="."]
 margin_left = 289.979
@@ -43,14 +49,19 @@ custom_constants/shadow_offset_y = 10
 text = "PYOKOMON"
 script = ExtResource( 3 )
 
-[node name="FrogGrid" type="GridContainer" parent="."]
-margin_left = 320.0
-margin_top = 150.0
-margin_right = 920.0
-margin_bottom = 605.0
-rect_min_size = Vector2( 600, 455 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="FrogStats" type="CenterContainer" parent="."]
+margin_left = 133.113
+margin_top = 156.375
+margin_right = 1199.11
+margin_bottom = 611.375
+
+[node name="GridContainer" type="GridContainer" parent="FrogStats"]
+margin_right = 1066.0
+margin_bottom = 455.0
+rect_min_size = Vector2( 1066, 455 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 4
 columns = 3
 
 [node name="FadeIn" parent="." instance=ExtResource( 4 )]

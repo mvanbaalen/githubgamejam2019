@@ -61,4 +61,4 @@ margin_right = 317.0
 margin_bottom = 60.0
 text = "Start"
 
-[connection signal="pressed" from="StartButton" to="Arena" method="_on_StartButton_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
