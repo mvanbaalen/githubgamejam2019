@@ -1,22 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Prepare/Breed/breed.gd" type="Script" id=1]
 [ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Prepare/FrogProfile.tscn" type="PackedScene" id=3]
-[ext_resource path="res://title_screen/AnimatedTitle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fade_in/FadeIn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://img/frog_profile1.png" type="Texture" id=3]
+[ext_resource path="res://title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=4]
+[ext_resource path="res://img/frog_profile2.png" type="Texture" id=5]
+[ext_resource path="res://img/frog_profile4.png" type="Texture" id=6]
+[ext_resource path="res://title_screen/AnimatedTitle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://fade_in/FadeIn.tscn" type="PackedScene" id=8]
 
-[sub_resource type="OpenSimplexNoise" id=2]
+[sub_resource type="OpenSimplexNoise" id=1]
 seed = 1
 octaves = 4
 persistence = 1.0
 lacunarity = 2.1
 
-[sub_resource type="NoiseTexture" id=1]
+[sub_resource type="NoiseTexture" id=2]
 width = 128
 height = 72
 seamless = true
-noise = SubResource( 2 )
+noise = SubResource( 1 )
 
 [sub_resource type="NoiseTexture" id=3]
 width = 128
@@ -24,7 +27,7 @@ height = 72
 seamless = true
 as_normalmap = true
 bump_strength = 32.0
-noise = SubResource( 2 )
+noise = SubResource( 1 )
 
 [node name="Breed" type="Control"]
 anchor_right = 1.0
@@ -39,7 +42,7 @@ script = ExtResource( 1 )
 modulate = Color( 0.466667, 1, 1, 1 )
 position = Vector2( 640, 360 )
 scale = Vector2( 10, 10 )
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 
 [node name="Background2" type="Sprite" parent="."]
 modulate = Color( 1, 0.466667, 0.929412, 0.337255 )
@@ -55,25 +58,93 @@ margin_bottom = 707.926
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
 
-[node name="FrogProfile1" parent="." instance=ExtResource( 3 )]
-margin_left = 10.0
+[node name="FrogProfile1" type="VBoxContainer" parent="."]
+margin_left = 91.0
 margin_top = 120.0
-margin_right = 371.689
-margin_bottom = 514.158
+margin_right = 452.689
+margin_bottom = 699.0
+alignment = 1
 
-[node name="FrogProfile2" parent="." instance=ExtResource( 3 )]
-margin_left = 920.396
+[node name="CenterContainer" type="CenterContainer" parent="FrogProfile1"]
+margin_right = 361.0
+margin_bottom = 500.0
+
+[node name="FrogPicture" type="TextureRect" parent="FrogProfile1/CenterContainer"]
+margin_left = 28.0
+margin_right = 332.0
+margin_bottom = 500.0
+texture = ExtResource( 3 )
+stretch_mode = 1
+
+[node name="FrogName" type="Label" parent="FrogProfile1"]
+margin_top = 504.0
+margin_right = 361.0
+margin_bottom = 579.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Frog Name"
+align = 1
+
+[node name="FrogProfile2" type="VBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 750.396
 margin_top = 120.0
-margin_right = 1273.4
-margin_bottom = 559.0
+margin_right = 1279.4
+margin_bottom = 699.0
+alignment = 1
 
-[node name="FrogProfileNew" parent="." instance=ExtResource( 3 )]
+[node name="CenterContainer" type="CenterContainer" parent="FrogProfile2"]
+margin_right = 529.0
+margin_bottom = 500.0
+
+[node name="FrogPicture" type="TextureRect" parent="FrogProfile2/CenterContainer"]
+margin_right = 529.0
+margin_bottom = 500.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="FrogName" type="Label" parent="FrogProfile2"]
+margin_top = 504.0
+margin_right = 529.0
+margin_bottom = 579.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Frog Name"
+align = 1
+
+[node name="FrogProfileNew" type="VBoxContainer" parent="."]
 margin_left = 440.928
 margin_top = 100.0
 margin_right = 793.928
 margin_bottom = 606.018
+alignment = 1
 
-[node name="VersionLabel2" parent="." instance=ExtResource( 4 )]
+[node name="CenterContainer" type="CenterContainer" parent="FrogProfileNew"]
+margin_right = 353.0
+margin_bottom = 500.0
+
+[node name="FrogPicture" type="TextureRect" parent="FrogProfileNew/CenterContainer"]
+margin_right = 352.0
+margin_bottom = 500.0
+texture = ExtResource( 6 )
+stretch_mode = 1
+
+[node name="FrogName" type="Label" parent="FrogProfileNew"]
+margin_top = 504.0
+margin_right = 353.0
+margin_bottom = 579.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Frog Name"
+align = 1
+
+[node name="VersionLabel2" parent="." instance=ExtResource( 7 )]
 margin_right = 1282.0
 text = "BREED"
 
@@ -81,5 +152,5 @@ text = "BREED"
 
 [node name="SecondFrogTween" type="Tween" parent="."]
 
-[node name="FadeIn" parent="." instance=ExtResource( 5 )]
+[node name="FadeIn" parent="." instance=ExtResource( 8 )]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
