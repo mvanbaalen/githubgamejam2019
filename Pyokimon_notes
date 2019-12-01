@@ -1,0 +1,57 @@
+Pyokimon:
+
+code
+	game
+		main menu
+			play
+				prepare
+					breed
+					stats
+				battle
+					place
+					fight
+					win
+					lose
+				retire
+			credits
+
+assets
+	menu
+		font
+		theme
+	frogs
+		frog sprites
+		frog faces (cameron)
+	maps
+		lillypad arena
+		water
+	extras
+		stat
+
+Start with two random frogs, both level 1. You can have up to 6 frogs max.
+
+Start the game in the Prepare scene where you can check stats of your frogs, let them go,
+or breed any two frogs as long as they are level 2 or higher (Maybe: when you breed frogs,
+the two parent frogs stay at the same level as a tradeoff mechanism?) The new frog is generated
+deterministically as a function of the parents' id (hash, modulo or something) or completely
+random, with a lower chance to get a "rare" frog with high stats. Name and everything could
+be randomly rolled just to make it easier.
+
+You can check the stats of your frogs and see their profile pick in the Stats scene.
+
+Once your ready, click "battle" button in the Prepare scene and load Battle scene.
+You place each frog in the Area2D Arena scene and once all of your frogs are placed, click
+"go" button and the frogs will target, jump and ground pound the nearest frog in order to
+try and knock them off the lillypad arena into the water. Last team standing wins.
+The PC player will have the same AI and similar frogs +/- some stats to balance difficulty.
+Frogs that fall off aren't lost forever. Frogs that stay on will level up and get a stat
+boost, and they can breed.
+
+Play until you decide to retire. Show the credits and loop back to main menu.
+
+Stats are:
+SPD - speed in targeting and jumping
+JMP - max jump distance
+STR - alternatively PWR, strength of ground pound and effect on pounded enemy frogs
+INT - frogs target with less error in degrees and distance, accuracy essentially, ACC? 
+FRG - hit box size decreases

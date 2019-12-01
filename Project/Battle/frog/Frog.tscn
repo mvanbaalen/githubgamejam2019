@@ -1,0 +1,97 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://img/OutlineShader.tres" type="Material" id=1]
+[ext_resource path="res://Battle/frog/Frog.gd" type="Script" id=2]
+[ext_resource path="res://img/frog_frontlegs.png" type="Texture" id=3]
+[ext_resource path="res://img/frog_frontlegs_walk1.png" type="Texture" id=4]
+[ext_resource path="res://img/frog_frontlegs_walk2.png" type="Texture" id=5]
+[ext_resource path="res://img/frog_backlegs.png" type="Texture" id=6]
+[ext_resource path="res://img/frog_body.png" type="Texture" id=7]
+[ext_resource path="res://img/frog_eyes.png" type="Texture" id=8]
+[ext_resource path="res://img/frog_eyes_blink1.png" type="Texture" id=9]
+[ext_resource path="res://img/frog_eyes_blink2.png" type="Texture" id=10]
+[ext_resource path="res://Battle/frog/FrogArea.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
+} ]
+
+[node name="Frog" type="KinematicBody2D" groups=[
+"frog",
+]]
+material = ExtResource( 1 )
+scale = Vector2( 0.5, 0.5 )
+input_pickable = true
+script = ExtResource( 2 )
+
+[node name="FrontLegsSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
+use_parent_material = true
+rotation = -1.5708
+frames = SubResource( 1 )
+animation = "Walk"
+frame = 1
+playing = true
+
+[node name="BackLegsSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
+use_parent_material = true
+rotation = -1.5708
+frames = SubResource( 2 )
+animation = "Idle"
+
+[node name="BodySprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
+use_parent_material = true
+rotation = -1.5708
+frames = SubResource( 3 )
+animation = "Idle"
+
+[node name="EyesSprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
+rotation = -1.5708
+frames = SubResource( 4 )
+animation = "Idle"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" parent="." instance=ExtResource( 11 )]
+
+[node name="Overlap" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" parent="Overlap" instance=ExtResource( 11 )]
+
+[connection signal="input_event" from="." to="." method="_on_Frog_input_event"]

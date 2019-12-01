@@ -1,0 +1,32 @@
+[gd_resource type="StyleBoxTexture" load_steps=5 format=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 3
+octaves = 4
+period = 81.6
+lacunarity = 1.25
+
+[sub_resource type="NoiseTexture" id=2]
+as_normalmap = true
+noise = SubResource( 1 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+seed = 2
+octaves = 1
+period = 34.6
+persistence = 0.282
+lacunarity = 1.7
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
+
+[resource]
+texture = SubResource( 4 )
+normal_map = SubResource( 2 )
+region_rect = Rect2( 0, 0, 512, 512 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+draw_center = false
+

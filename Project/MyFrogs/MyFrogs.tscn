@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Battle/frog/Frog.tscn" type="PackedScene" id=1]
+
+[node name="MyFrogs" type="Node"]
+
+[node name="Frog1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 265.559, 183.72 )
+
+[node name="Frog2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 639.68, 172.029 )
+
+[node name="Frog3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1033.84, 165.348 )
+
+[node name="Frog4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 322.345, 536.129 )
+
+[node name="Frog5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 681.435, 516.087 )
+
+[node name="Frog6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1027.16, 527.778 )
+
