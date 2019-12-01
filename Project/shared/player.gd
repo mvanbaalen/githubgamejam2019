@@ -3,6 +3,7 @@ var abstract_frog = load("res://shared/abstract_frog.gd")
 
 
 var frogs = []
+var level = 1
 
 
 # State handling variables
@@ -15,7 +16,3 @@ func _ready():
 	for i in range(2):
 		var new_frog = abstract_frog.new()
 		frogs.append(new_frog)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

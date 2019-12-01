@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://img/Shader.tres" type="Material" id=1]
-[ext_resource path="res://Prepare/Battle/frog/Frog.gd" type="Script" id=2]
+[ext_resource path="res://Battle/frog/Frog.gd" type="Script" id=2]
 [ext_resource path="res://img/frog_frontlegs.png" type="Texture" id=3]
 [ext_resource path="res://img/frog_frontlegs_walk1.png" type="Texture" id=4]
 [ext_resource path="res://img/frog_frontlegs_walk2.png" type="Texture" id=5]
@@ -10,6 +10,7 @@
 [ext_resource path="res://img/frog_eyes.png" type="Texture" id=8]
 [ext_resource path="res://img/frog_eyes_blink1.png" type="Texture" id=9]
 [ext_resource path="res://img/frog_eyes_blink2.png" type="Texture" id=10]
+[ext_resource path="res://Battle/frog/FrogArea.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -48,10 +49,6 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 45.0
-height = 98.0
-
 [node name="Frog" type="KinematicBody2D" groups=[
 "frog",
 ]]
@@ -88,9 +85,10 @@ animation = "Idle"
 frame = 1
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.75, -2.88 )
-rotation = 1.5708
-shape = SubResource( 5 )
+[node name="CollisionShape2D" parent="." instance=ExtResource( 11 )]
+
+[node name="Overlap" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" parent="Overlap" instance=ExtResource( 11 )]
 
 [connection signal="input_event" from="." to="." method="_on_Frog_input_event"]

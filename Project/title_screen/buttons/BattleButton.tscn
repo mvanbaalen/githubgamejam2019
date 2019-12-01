@@ -11,3 +11,4 @@ scene_to_load = "res://Prepare/Battle/Battle.tscn"
 margin_left = 107.304
 margin_right = -103.696
 text = "battle!"
+

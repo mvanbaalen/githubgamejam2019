@@ -5,6 +5,8 @@ enum Team  {PLAYER, ENEMY}
 
 export(Team) var team = Team.PLAYER
 
+var stats # Comes from the Abstract Frog
+
 #Prepare only
 var dragging = false
 
@@ -98,7 +100,8 @@ func fall():
 
 func _on_Frog_input_event(viewport, event, shape_idx):
 	if current_state == State.PREPARE:
-		if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-			dragging = true
-		if event is InputEventMouseButton and !event.pressed and event.button_index == BUTTON_LEFT:
-			dragging = false
+		if team == Team.PLAYER:
+			if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+				dragging = true
+			if event is InputEventMouseButton and !event.pressed and event.button_index == BUTTON_LEFT:
+				dragging = false

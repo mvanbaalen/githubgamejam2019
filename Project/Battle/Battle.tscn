@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Prepare/Battle/Battle.gd" type="Script" id=1]
-[ext_resource path="res://Prepare/Battle/Background.gd" type="Script" id=2]
-[ext_resource path="res://Prepare/Battle/Log.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prepare/Battle/Arena.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prepare/Battle/FrogsList.gd" type="Script" id=5]
-[ext_resource path="res://Prepare/Battle/frog/Frog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Battle/Battle.gd" type="Script" id=1]
+[ext_resource path="res://Battle/Background.gd" type="Script" id=2]
+[ext_resource path="res://Battle/Log.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Battle/Arena.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Battle/FrogsList.gd" type="Script" id=5]
+[ext_resource path="res://Battle/frog/Frog.tscn" type="PackedScene" id=6]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 1
@@ -44,26 +44,14 @@ margin_left = 635.356
 margin_top = 365.591
 margin_right = 635.356
 margin_bottom = 365.591
+mouse_filter = 2
 
 [node name="Frogs" type="Node" parent="Arena"]
 script = ExtResource( 5 )
 
-[node name="GoodFrog" parent="Arena/Frogs" instance=ExtResource( 6 )]
-modulate = Color( 0.517647, 1, 0.490196, 1 )
-position = Vector2( 853.764, 364.299 )
-
-[node name="GoodFrog2" parent="Arena/Frogs" instance=ExtResource( 6 )]
-modulate = Color( 0.517647, 1, 0.490196, 1 )
-position = Vector2( 640.525, 577.537 )
-
 [node name="BadFrog" parent="Arena/Frogs" instance=ExtResource( 6 )]
 modulate = Color( 1, 0.470588, 0.470588, 1 )
-position = Vector2( 497.074, 368.176 )
-team = 1
-
-[node name="BadFrog2" parent="Arena/Frogs" instance=ExtResource( 6 )]
-modulate = Color( 1, 0.501961, 0.501961, 1 )
-position = Vector2( 648.279, 370.761 )
+position = Vector2( 657.326, 357.837 )
 team = 1
 
 [node name="StartButton" type="Button" parent="."]
@@ -72,4 +60,5 @@ margin_top = 4.0
 margin_right = 317.0
 margin_bottom = 60.0
 text = "Start"
+
 [connection signal="pressed" from="StartButton" to="Arena" method="_on_StartButton_pressed"]

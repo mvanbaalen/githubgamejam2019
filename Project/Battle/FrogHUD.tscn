@@ -6,6 +6,7 @@
 [node name="FrogHUD1" type="Control"]
 margin_right = 154.0
 margin_bottom = 111.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 18.372
@@ -14,6 +15,7 @@ margin_right = 418.372
 margin_bottom = 364.926
 rect_rotation = 30.0
 rect_scale = Vector2( 0.3, 0.3 )
+mouse_filter = 2
 texture = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
