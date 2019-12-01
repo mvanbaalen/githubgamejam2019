@@ -13,6 +13,7 @@ onready var BattleScene = ArenaArea.get_parent()
 
 #Prepare only
 var dragging = false
+var last_known_position = position
 var legal_position
 
 #TODO: Use timers for this
@@ -129,20 +130,29 @@ func _on_Frog_input_event(viewport, event, shape_idx):
 	if current_state == State.PREPARE:
 		if team == Team.PLAYER:
 			if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-				dragging = true
+				start_drag()
 			if event is InputEventMouseButton and !event.pressed and event.button_index == BUTTON_LEFT:
 				undrag()
-				
+
+func start_drag():
+	dragging = true
+	last_known_position = position
+
+		
 func undrag():
 	dragging = false
-	if ($Overlap.get_overlapping_bodies().size() == 1
-	and $Overlap.overlaps_area(ArenaArea.get_node("Area2D"))):
-		# Overlaps with only self and the lilypad, this is gross
-		legal_position = true
-		modulate = Color(1,1,1)
+	# Really doing things wrong now...
+	if $Overlap.overlaps_area(get_tree().get_root().find_node("NoPlace")):
+		position = last_known_position
 	else:
-		legal_position = false
-		modulate = Color(1,0,0)
+		if ($Overlap.get_overlapping_bodies().size() == 1
+		and $Overlap.overlaps_area(ArenaArea.get_node("Area2D"))):
+			# Overlaps with only self and the lilypad, this is gross
+			legal_position = true
+			modulate = Color(1,1,1)
+		else:
+			legal_position = false
+			modulate = Color(1,0,0)
 		
 func ready_to_fight():
 	return (team == Team.PLAYER and legal_position) or (team == Team.ENEMY)

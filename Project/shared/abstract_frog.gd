@@ -20,7 +20,10 @@ var name = ""
 var profile = 0
 
 var level = 1
-var power = 0
+
+var strength = 0 setget ,get_strength
+var str_per_level = 0
+
 var speed = 0
 var size = 10
 
@@ -30,4 +33,12 @@ func _init():
 	
 	name = get_random_name()
 	profile = rng.randi_range(0, 9)
+	
+	strength = rng.randi_range(4,6)
+	str_per_level = rng.randf_range(.25, .5)
+	
+func get_strength():
+	return floor(strength + str_per_level * level)
+	
+
 	
