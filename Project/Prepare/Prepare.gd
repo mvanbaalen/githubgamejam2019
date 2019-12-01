@@ -19,7 +19,6 @@ func _ready():
 		
 		frog_stats.get_node("NameLabel").text = frog.name
 		$FrogStats/GridContainer.add_child(frog_stats)
-	$FrogStats/GridContainer.get_child(0).grab_focus()
 	$BattleButton.connect("pressed", self, "_on_Button_pressed",[$BattleButton.scene_to_load])
 	$RetireButton.connect("pressed", self, "_on_Button_pressed",[$RetireButton.scene_to_load])
 	AudioPlayer.change_song(bgm)
@@ -40,7 +39,6 @@ func _on_FrogButton_pressed(frog):
 		label.get_child(0).connect("pressed", self, "_on_Button_pressed", [label.get_child(0).scene_to_load])
 	inspect_menu.rect_position = frog.get_global_transform().origin - Vector2(20.0,10.0)
 	add_child(inspect_menu)
-	$InspectFrog.get_child(0).grab_focus()
 	Player.frog_to_check = frog.abstract_frog_instance
 
 func _on_FadeIn_fade_finished():

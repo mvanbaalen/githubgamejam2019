@@ -16,5 +16,5 @@ volume_db = -80.0
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
-[connection signal="ready" from="MusicPlayer" to="." method="_on_MusicPlayer_ready"]
+
 [connection signal="tween_completed" from="MusicPlayer/TweenOut" to="." method="_on_TweenOut_tween_completed"]

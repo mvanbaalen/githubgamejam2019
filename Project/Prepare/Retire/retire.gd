@@ -4,7 +4,6 @@ var tick = 0
 var bgm = load('res://audio/pyoko_retire.ogg')
 
 func _ready():
-	$ReturnButton.grab_focus()
 	AudioPlayer.change_song(bgm)
 
 func _on_Button_pressed():

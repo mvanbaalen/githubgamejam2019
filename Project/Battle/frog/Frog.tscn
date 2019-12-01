@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://img/Shader.tres" type="Material" id=1]
+[ext_resource path="res://img/OutlineShader.tres" type="Material" id=1]
 [ext_resource path="res://Battle/frog/Frog.gd" type="Script" id=2]
 [ext_resource path="res://img/frog_frontlegs.png" type="Texture" id=3]
 [ext_resource path="res://img/frog_frontlegs_walk1.png" type="Texture" id=4]
@@ -58,6 +58,7 @@ input_pickable = true
 script = ExtResource( 2 )
 
 [node name="FrontLegsSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
 use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 1 )
@@ -66,12 +67,14 @@ frame = 1
 playing = true
 
 [node name="BackLegsSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
 use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 2 )
 animation = "Idle"
 
 [node name="BodySprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
 use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 3 )
@@ -82,7 +85,7 @@ use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 4 )
 animation = "Idle"
-frame = 5
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" parent="." instance=ExtResource( 11 )]

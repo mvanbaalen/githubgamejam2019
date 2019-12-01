@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://title_screen/title_screen.gd" type="Script" id=1]
 [ext_resource path="res://title_screen/AnimatedTitle.tscn" type="PackedScene" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://title_screen/buttons/HowToPlayButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=6]
 [ext_resource path="res://anim/fade_in/FadeIn.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -59,12 +63,14 @@ alignment = 1
 margin_top = 180.0
 margin_right = 518.0
 margin_bottom = 240.0
+custom_styles/focus = SubResource( 1 )
 scene_to_load = "res://Prepare/Prepare.tscn"
 
 [node name="HowToPlayButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
 margin_top = 260.0
 margin_right = 518.0
 margin_bottom = 320.0
+custom_styles/focus = SubResource( 2 )
 scene_to_load = "res://title_screen/HowToPlay.tscn"
 
 [node name="VersionLabel" type="Label" parent="Menu"]
@@ -77,4 +83,5 @@ custom_fonts/font = ExtResource( 6 )
 text = "2019 GitHub Game Jam - \"Leaps and Bounds\""
 
 [node name="FadeIn" parent="." instance=ExtResource( 7 )]
+
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

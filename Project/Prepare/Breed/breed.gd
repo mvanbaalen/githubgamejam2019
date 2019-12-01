@@ -23,9 +23,6 @@ func _ready():
 	        Vector2(0, 0), Vector2(-100, 0), 1,
 	        Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$SecondFrogTween.start()
-	
-	#Remove later
-	$Button.grab_focus()
 
 func _on_Button_pressed():
 	if breeding_is_complete:

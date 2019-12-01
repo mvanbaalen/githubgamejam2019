@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=1]
-[ext_resource path="res://img/noise_styleboxtexture.tres" type="StyleBox" id=2]
-[ext_resource path="res://Prepare/StatsButton.gd" type="Script" id=3]
-[ext_resource path="res://title_screen/buttons/MenuButton.gd" type="Script" id=4]
+[ext_resource path="res://Prepare/StatsButton.gd" type="Script" id=2]
+[ext_resource path="res://title_screen/buttons/MenuButton.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="Choices" type="VBoxContainer"]
 margin_right = 231.0
@@ -26,9 +31,11 @@ uppercase = true
 [node name="StatsButton" type="Button" parent="StatsLabel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/focus = ExtResource( 2 )
+margin_top = -2.05054
+margin_bottom = -2.05054
+custom_styles/focus = SubResource( 1 )
 flat = true
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 scene_to_load = "res://Prepare/Stats/Stats.tscn"
 
 [node name="BreedLabel" type="Label" parent="."]
@@ -46,9 +53,9 @@ uppercase = true
 [node name="BreedButton" type="Button" parent="BreedLabel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/focus = ExtResource( 2 )
+custom_styles/focus = SubResource( 2 )
 flat = true
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 scene_to_load = "res://Prepare/Breed/Select.tscn"
 
 [node name="CroakLabel" type="Label" parent="."]
@@ -66,8 +73,10 @@ uppercase = true
 [node name="CroakButton" type="Button" parent="CroakLabel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/focus = ExtResource( 2 )
+margin_top = -2.0506
+margin_bottom = -2.0506
+custom_styles/focus = SubResource( 3 )
 flat = true
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 scene_to_load = "res://Prepare/Croak/Croak.tscn"
 

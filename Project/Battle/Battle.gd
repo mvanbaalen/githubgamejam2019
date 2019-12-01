@@ -36,11 +36,13 @@ func _ready():
 		for new_position in LEVELS[Player.level].keys():
 			make_enemy_frog(new_position)
 	else:
-		for new_frog_id in range(6):
+		for new_frog_id in range(clamp(Player.level, 1, 6)):
 			var new_position = Vector2()
 			new_position.x = rng.randi_range(335,935)
 			new_position.y = rng.randi_range(65, 665)
 			var new_frog = make_enemy_frog(new_position)
+			new_frog.stats.level = 1 + floor(rng.randi_range(1,3) * Player.level/5)
+			new_frog.modulate = Color(.9,.9,.9)
 			#TODO This loops forever. Of course.
 #			while !new_frog.check_legal_position():
 #				$Arena/Frogs.remove_child(new_frog)

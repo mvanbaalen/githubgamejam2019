@@ -22,6 +22,8 @@ _global_script_class_icons={
 
 config/name="Pyokomon"
 run/main_scene="res://title_screen/TitleScreen.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 config/icon="res://icon.png"
 
 [autoload]
