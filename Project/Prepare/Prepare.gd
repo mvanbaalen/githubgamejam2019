@@ -11,6 +11,11 @@ func _ready():
 		var frog_button = frog_stats.get_node("FrogButton")
 		frog_button.connect("pressed", self, "_on_FrogButton_pressed", [frog_button])
 		frog_button.abstract_frog_instance = frog
+		
+		# TODO Memoization? Or load the texture on the abstract frog?
+		var frog_texture = load("res://img/frog_profile" + str(frog.profile) + ".png")
+		frog_button.texture_normal = frog_texture
+		
 		frog_stats.get_node("NameLabel").text = frog.name
 		$FrogStats/GridContainer.add_child(frog_stats)
 	$FrogStats/GridContainer.get_child(0).grab_focus()
@@ -27,8 +32,8 @@ func _on_FrogButton_pressed(frog):
 		$InspectFrog.free()
 	var inspect_menu = InspectFrog.instance()
 	inspect_menu.name = "InspectFrog"
-	for button in inspect_menu.get_children():
-		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+	for label in inspect_menu.get_children():
+		label.get_child(0).connect("pressed", self, "_on_Button_pressed", [label.get_child(0).scene_to_load])
 	inspect_menu.rect_position = frog.get_global_transform().origin - Vector2(20.0,10.0)
 	add_child(inspect_menu)
 	$InspectFrog.get_child(0).grab_focus()

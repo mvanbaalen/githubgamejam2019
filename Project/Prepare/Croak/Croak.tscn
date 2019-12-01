@@ -1,20 +1,66 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prepare/Croak/CroakScene.gd" type="Script" id=1]
-[ext_resource path="res://Prepare/FrogProfile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://title_screen/fonts/montserrat_eb_48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://title_screen/fonts/montserrat_eb_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Prepare/FrogProfile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=5]
 
 [node name="CroakScene" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 
-[node name="FrogProfile" parent="." instance=ExtResource( 2 )]
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.247059, 0.0431373, 0.0431373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -115.5
+margin_right = 115.5
+margin_bottom = 153.0
+custom_fonts/font = ExtResource( 2 )
+text = "Croak
+"
+align = 1
+uppercase = true
+
+[node name="Description" type="Label" parent="."]
+margin_left = 672.557
+margin_top = 127.937
+margin_right = 1148.56
+margin_bottom = 226.937
+custom_fonts/font = ExtResource( 3 )
+text = "If you don't need this frog anymore, you can just croak it. It will be gone forever if you do."
+autowrap = true
+
+[node name="FrogProfile" parent="." instance=ExtResource( 4 )]
+margin_left = 162.837
+margin_top = 89.1725
+margin_right = 515.837
+margin_bottom = 668.173
 
 [node name="Button" type="Button" parent="."]
-margin_left = 700.457
-margin_top = 246.84
-margin_right = 807.457
-margin_bottom = 266.84
-text = "Confirm Croak?"
+margin_left = 722.754
+margin_top = 278.0
+margin_right = 1066.75
+margin_bottom = 370.0
+custom_fonts/font = ExtResource( 5 )
+text = "Confirm Croak"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 792.372
+margin_top = 524.432
+margin_right = 987.372
+margin_bottom = 573.432
+custom_fonts/font = ExtResource( 3 )
+text = "Nevermind..."
 
 [connection signal="pressed" from="Button" to="." method="_on_Croak_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Back_Button_pressed"]

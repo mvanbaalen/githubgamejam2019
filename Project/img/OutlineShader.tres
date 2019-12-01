@@ -65,3 +65,4 @@ shader_param/color_value_1 = Vector3( 1, 0, 0 )
 shader_param/color_value_2 = Vector3( 0, 1, 0 )
 shader_param/color_value_3 = Vector3( 0, 0, 1 )
 shader_param/period = 0.1
+

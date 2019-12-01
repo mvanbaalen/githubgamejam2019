@@ -17,6 +17,7 @@ static func get_random_name() -> String:
 	return RANDOM_NAMES[randi() % len(RANDOM_NAMES)] as String
 
 var name = ""
+var profile = 0
 
 var level = 1
 var power = 0
@@ -24,5 +25,9 @@ var speed = 0
 var size = 10
 
 func _init():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
 	name = get_random_name()
+	profile = rng.randi_range(0, 9)
 	
