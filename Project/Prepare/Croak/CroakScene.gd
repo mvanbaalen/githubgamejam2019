@@ -7,9 +7,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var frog = Player.frog_to_check
-	find_node("FrogName").text = frog.name
-	var frog_texture = load("res://img/frog_profile" + str(frog.profile) + ".png")
-	find_node("FrogPicture").texture = frog_texture
+	find_node("FrogProfile").set_frog(Player.frog_to_check)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

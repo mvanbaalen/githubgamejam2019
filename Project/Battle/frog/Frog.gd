@@ -67,6 +67,10 @@ func valid_target():
 
 func calculate_dragging():
 	position = get_viewport().get_mouse_position()
+	if check_legal_position():
+		modulate = Color(1,1,1)
+	else:
+		modulate = Color(1,0,0)
 	
 func start_battle():
 	current_state = State.WAIT
@@ -126,6 +130,8 @@ func fall():
 		else:
 			BattleScene.victory(Team.PLAYER)
 
+#warning-ignore:unused_argument
+#warning-ignore:unused_argument
 func _on_Frog_input_event(viewport, event, shape_idx):
 	if current_state == State.PREPARE:
 		if team == Team.PLAYER:
@@ -140,19 +146,23 @@ func start_drag():
 
 		
 func undrag():
-	dragging = false
-	# Really doing things wrong now...
-	if $Overlap.overlaps_area(get_tree().get_root().find_node("NoPlace")):
-		position = last_known_position
-	else:
-		if ($Overlap.get_overlapping_bodies().size() == 1
-		and $Overlap.overlaps_area(ArenaArea.get_node("Area2D"))):
-			# Overlaps with only self and the lilypad, this is gross
+	if dragging:
+		dragging = false
+		if check_legal_position():
 			legal_position = true
-			modulate = Color(1,1,1)
 		else:
 			legal_position = false
-			modulate = Color(1,0,0)
+			position = last_known_position
+		
+				
+func check_legal_position():
+	var no_collide = get_parent().get_parent().get_parent().get_node("StartButton/NoPlace")
+	if $Overlap.overlaps_area(no_collide) or $Overlap.get_overlapping_bodies().size() > 1:
+		return false
+	else:
+		return ($Overlap.get_overlapping_bodies().size() == 1
+		and $Overlap.overlaps_area(ArenaArea.get_node("Area2D")))
+			# Overlaps with only self and the lilypad, this is gross
 		
 func ready_to_fight():
 	return (team == Team.PLAYER and legal_position) or (team == Team.ENEMY)

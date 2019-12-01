@@ -3,7 +3,6 @@ extends Control
 const FIRST = 0
 const SECOND = 1
 
-var MyFrogs = load('res://MyFrogs/MyFrogs.tscn')
 var frogs_to_breed
 var breeding_is_complete = false
 var tick = 0
@@ -11,9 +10,9 @@ var tick = 0
 func _ready():
 	#Identify which frogs were selected for breeding and load profiles
 	frogs_to_breed = []
-	for frog in MyFrogs.get_children():
-		if frog.is_breeding:
-			frogs_to_breed.append(frog)
+	for frog in Player.frogs:
+		#if frog.is_breeding:
+		frogs_to_breed.append(frog)
 			
 	#Animate/Tween profile nodes
 	$FirstFrogTween.interpolate_property($Node2D, "position",
