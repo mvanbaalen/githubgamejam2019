@@ -23,4 +23,3 @@ void vertex() {
 [resource]
 shader = SubResource( 1 )
 shader_param/period = 0.1
-

@@ -5,7 +5,7 @@
 [ext_resource path="res://title_screen/TitleLabel.gd" type="Script" id=3]
 [ext_resource path="res://img/frog3.png" type="Texture" id=4]
 [ext_resource path="res://title_screen/buttons/NewGameButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://title_screen/buttons/ContinueButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://title_screen/buttons/HowToPlayButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=7]
 [ext_resource path="res://anim/fade_in/FadeIn.tscn" type="PackedScene" id=8]
 
@@ -46,7 +46,7 @@ custom_colors/font_outline_modulate = Color( 0, 0.215686, 0.0705882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0.756863, 0.294118, 1 )
 custom_constants/shadow_offset_x = 10
 custom_constants/shadow_offset_y = 10
-text = "PYOKIMON"
+text = "PYOKOMON"
 align = 1
 script = ExtResource( 3 )
 
@@ -83,11 +83,11 @@ margin_right = 518.0
 margin_bottom = 240.0
 scene_to_load = "res://Prepare/Prepare.tscn"
 
-[node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 6 )]
+[node name="HowToPlayButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 6 )]
 margin_top = 260.0
 margin_right = 518.0
 margin_bottom = 320.0
-scene_to_load = "res://Prepare/Prepare.tscn"
+scene_to_load = "res://title_screen/HowToPlay.tscn"
 
 [node name="VersionLabel" type="Label" parent="Menu"]
 margin_top = 639.0
@@ -99,5 +99,4 @@ custom_fonts/font = ExtResource( 7 )
 text = "2019 GitHub Game Jam - \"Leaps and Bounds\""
 
 [node name="FadeIn" parent="." instance=ExtResource( 8 )]
-
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Prepare/return_to_title.gd" type="Script" id=1]
+[ext_resource path="res://Prepare/Battle/Battle.gd" type="Script" id=1]
 [ext_resource path="res://Prepare/Battle/Background.gd" type="Script" id=2]
 [ext_resource path="res://Prepare/Battle/Log.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prepare/Battle/Arena.tscn" type="PackedScene" id=4]
@@ -72,5 +72,4 @@ margin_top = 4.0
 margin_right = 317.0
 margin_bottom = 60.0
 text = "Start"
-
 [connection signal="pressed" from="StartButton" to="Arena" method="_on_StartButton_pressed"]

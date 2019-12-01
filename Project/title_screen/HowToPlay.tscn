@@ -1,0 +1,281 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://title_screen/HowToPlay.gd" type="Script" id=1]
+[ext_resource path="res://title_screen/fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://title_screen/TitleLabel.gd" type="Script" id=3]
+[ext_resource path="res://title_screen/fonts/montserrat_eb_16.tres" type="DynamicFont" id=4]
+[ext_resource path="res://title_screen/fonts/montserrat_eb_24.tres" type="DynamicFont" id=5]
+[ext_resource path="res://title_screen/ExampleBattle.gd" type="Script" id=6]
+[ext_resource path="res://Prepare/Battle/Background.gd" type="Script" id=7]
+[ext_resource path="res://Prepare/Battle/Arena.gd" type="Script" id=8]
+[ext_resource path="res://Prepare/Battle/arena_area.gd" type="Script" id=9]
+[ext_resource path="res://Prepare/Battle/lillypad.tres" type="Texture" id=10]
+[ext_resource path="res://Prepare/Battle/LillypadShape.gd" type="Script" id=11]
+[ext_resource path="res://Prepare/Battle/FrogsList.gd" type="Script" id=12]
+[ext_resource path="res://anim/fade_in/FadeIn.tscn" type="PackedScene" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="OpenSimplexNoise" id=2]
+seed = 1
+octaves = 2
+period = 36.6
+persistence = 0.633
+lacunarity = 1.83
+
+[sub_resource type="NoiseTexture" id=3]
+height = 720
+seamless = true
+as_normalmap = true
+bump_strength = 18.1
+noise = SubResource( 2 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 300.0
+
+[node name="HowToPlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_right = 1280.0
+margin_bottom = 717.0
+color = Color( 0.372549, 0.14902, 0.427451, 1 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 27.0
+margin_right = 1160.0
+margin_bottom = 697.0
+
+[node name="VersionLabel2" type="Label" parent="Menu"]
+margin_right = 1040.0
+margin_bottom = 99.0
+size_flags_vertical = 10
+size_flags_stretch_ratio = 1.01
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0.215686, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0.756863, 0.294118, 1 )
+custom_constants/shadow_offset_x = 10
+custom_constants/shadow_offset_y = 10
+text = "How To Play"
+align = 1
+script = ExtResource( 3 )
+
+[node name="Instructions" type="HBoxContainer" parent="Menu"]
+margin_top = 103.0
+margin_right = 1040.0
+margin_bottom = 703.0
+rect_min_size = Vector2( 1000, 600 )
+size_flags_vertical = 3
+
+[node name="BasicPlay" type="VBoxContainer" parent="Menu/Instructions"]
+margin_right = 344.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GoalText" type="Control" parent="Menu/Instructions/BasicPlay"]
+margin_right = 344.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 344, 300 )
+
+[node name="Label" type="RichTextLabel" parent="Menu/Instructions/BasicPlay/GoalText"]
+margin_left = -47.0
+margin_top = 9.0
+margin_right = 264.0
+margin_bottom = 573.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.831373, 0.858824, 0.827451, 1 )
+custom_colors/font_color_shadow = Color( 0.164706, 0.341176, 0.14902, 1 )
+custom_constants/table_vseparation = 0
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_constants/line_separation = 0
+text = "Train up to 6 frogs for a sumo-style battle against other frogs.
+
+Place your frogs in position and cheer as they fight for control of the lilly pad.
+
+The team with the last frog standing wins. All remaining frogs will level up.
+
+Any frogs level 2 or higher can breed to create a new level 1 frog."
+scroll_active = false
+
+[node name="Battle" type="Control" parent="Menu/Instructions"]
+margin_left = 348.0
+margin_right = 692.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextHeader" type="Control" parent="Menu/Instructions/Battle"]
+editor/display_folded = true
+margin_right = 344.0
+
+[node name="Label" type="Label" parent="Menu/Instructions/Battle/TextHeader"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+text = "Battle"
+
+[node name="Battle" type="Control" parent="Menu/Instructions/Battle"]
+margin_left = -50.0
+margin_top = 64.0
+margin_right = 294.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="Menu/Instructions/Battle/Battle"]
+self_modulate = Color( 0, 0.509804, 0.592157, 1 )
+position = Vector2( 365, 365 )
+scale = Vector2( 1.3, 1 )
+texture = SubResource( 3 )
+script = ExtResource( 7 )
+
+[node name="Arena" type="CenterContainer" parent="Menu/Instructions/Battle/Battle"]
+margin_left = 365.0
+margin_top = 365.591
+margin_right = 365.0
+margin_bottom = 365.591
+script = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="Menu/Instructions/Battle/Battle/Arena"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Menu/Instructions/Battle/Battle/Arena/Area2D"]
+shape = SubResource( 4 )
+
+[node name="LillypadShape" type="Polygon2D" parent="Menu/Instructions/Battle/Battle/Arena"]
+color = Color( 0, 1, 0.25098, 1 )
+texture = ExtResource( 10 )
+texture_offset = Vector2( 0, -300 )
+polygon = PoolVector2Array( -242.224, -170.989, -130.322, -127.565, -178.757, -234.456, -110.28, -277.881, 25.0049, -299.594, 170.311, -244.477, 265.511, -135.916, 293.904, 37.7834, 215.406, 209.812, 33.3558, 293.321, -101.929, 279.96, -203.81, 221.504, -268.947, 124.633, -299.011, 21.0816, -292.33, -65.7679, -270.617, -129.235 )
+script = ExtResource( 11 )
+
+[node name="Frogs" type="Node" parent="Menu/Instructions/Battle/Battle/Arena"]
+script = ExtResource( 12 )
+
+[node name="Stats" type="VBoxContainer" parent="Menu/Instructions"]
+margin_left = 696.0
+margin_right = 1040.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatsHeader" type="Control" parent="Menu/Instructions/Stats"]
+editor/display_folded = true
+margin_right = 344.0
+
+[node name="Label" type="Label" parent="Menu/Instructions/Stats/StatsHeader"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+text = "Stats"
+
+[node name="StatsTextBox" type="Control" parent="Menu/Instructions/Stats"]
+editor/display_folded = true
+margin_top = 4.0
+margin_right = 344.0
+margin_bottom = 4.0
+
+[node name="Stat" type="RichTextLabel" parent="Menu/Instructions/Stats/StatsTextBox"]
+margin_left = 1.0
+margin_top = 55.0
+margin_right = 134.0
+margin_bottom = 364.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.831373, 0.858824, 0.827451, 1 )
+custom_colors/font_color_shadow = Color( 0.164706, 0.341176, 0.14902, 1 )
+custom_constants/table_vseparation = 0
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_constants/line_separation = 0
+text = "STR
+
+INT
+
+SPD
+
+JMP
+
+FRG"
+scroll_active = false
+
+[node name="Explanation" type="RichTextLabel" parent="Menu/Instructions/Stats/StatsTextBox"]
+margin_left = 108.0
+margin_top = 55.0
+margin_right = 411.0
+margin_bottom = 364.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.831373, 0.858824, 0.827451, 1 )
+custom_colors/font_color_shadow = Color( 0.164706, 0.341176, 0.14902, 1 )
+custom_constants/table_vseparation = 0
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_constants/line_separation = 0
+text = "Ground pound  power
+
+Ability to target
+
+Speed during jump
+
+Range of jump
+
+Luck parameter"
+scroll_active = false
+
+[node name="RetireHeader" type="Control" parent="Menu/Instructions/Stats"]
+editor/display_folded = true
+margin_top = 8.0
+margin_right = 344.0
+margin_bottom = 8.0
+
+[node name="Label" type="Label" parent="Menu/Instructions/Stats/RetireHeader"]
+margin_top = 347.0
+margin_right = 131.0
+margin_bottom = 397.0
+custom_fonts/font = ExtResource( 5 )
+text = "Retire"
+
+[node name="RetireTextBox" type="Control" parent="Menu/Instructions/Stats"]
+editor/display_folded = true
+margin_top = 12.0
+margin_right = 344.0
+margin_bottom = 12.0
+
+[node name="Label" type="RichTextLabel" parent="Menu/Instructions/Stats/RetireTextBox"]
+margin_top = 398.0
+margin_right = 311.0
+margin_bottom = 509.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.831373, 0.858824, 0.827451, 1 )
+custom_colors/font_color_shadow = Color( 0.164706, 0.341176, 0.14902, 1 )
+custom_constants/table_vseparation = 0
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_constants/line_separation = 0
+text = "Ready to call it quits? Retire and start from the beginning."
+scroll_active = false
+
+[node name="FadeIn" parent="." instance=ExtResource( 13 )]
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 1138.42
+margin_top = 638.66
+margin_right = 1257.42
+margin_bottom = 694.66
+custom_fonts/font = ExtResource( 5 )
+text = "Back"
+[connection signal="body_exited" from="Menu/Instructions/Battle/Battle/Arena/Area2D" to="Menu/Instructions/Battle/Battle/Arena/Area2D" method="_on_Area2D_body_exited"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
