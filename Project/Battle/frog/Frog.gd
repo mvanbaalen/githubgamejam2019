@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const distance_multiplier = 1000
+
 enum State {PREPARE, WAIT, MOVING, MELEE, DIZZY, FALLEN}
 enum Team  {PLAYER, ENEMY}
 
@@ -25,9 +27,10 @@ var dizzy_time = 0
 var current_state = State.PREPARE
 var current_target = null
 
-export var speed = 100
+var movement_speed
 
 func _ready():
+	movement_speed = stats.speed * 25
 	if team == Team.PLAYER:
 		modulate = Color(1,0,0)
 		legal_position = false
@@ -88,7 +91,7 @@ func can_attack(target):
 func move_towards_target(delta):
 	if valid_target():
 		rotation = position.angle_to_point(current_target.position)
-		var collision = move_and_collide((current_target.position - position).normalized() * speed * delta)
+		var collision = move_and_collide((current_target.position - position).normalized() * movement_speed * delta)
 		if collision:
 			if collision.collider == current_target:
 				current_state = State.MELEE
@@ -100,7 +103,7 @@ func move_towards_target(delta):
 func attack_target(delta):
 	if valid_target():
 		#Todo recheck target in range
-		current_target.move_and_collide((current_target.position - position).normalized() * delta * 3000)
+		current_target.move_and_collide((current_target.position - position).normalized() * delta * distance_multiplier * stats.strength)
 		current_cooldown = attack_cooldown
 		current_state = State.MOVING
 		current_target.attacked()
@@ -130,7 +133,6 @@ func fall():
 		else:
 			BattleScene.victory(Team.PLAYER)
 
-#warning-ignore:unused_argument
 #warning-ignore:unused_argument
 func _on_Frog_input_event(viewport, event, shape_idx):
 	if current_state == State.PREPARE:

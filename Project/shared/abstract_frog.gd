@@ -24,7 +24,9 @@ var level = 1
 var strength = 0 setget ,get_strength
 var str_per_level = 0
 
-var speed = 0
+var speed = 0 setget ,get_speed
+var spd_per_level = 0
+
 var size = 10
 
 func _init():
@@ -37,8 +39,14 @@ func _init():
 	strength = rng.randi_range(4,6)
 	str_per_level = rng.randf_range(.25, .5)
 	
+	speed = rng.randi_range(4,6)
+	spd_per_level = rng.randf_range(.25, .5)
+	
 func get_strength():
-	return floor(strength + str_per_level * level)
+	return clamp(floor(strength + str_per_level * level), 0, 10)
+	
+func get_speed():
+	return clamp(floor(speed + spd_per_level * level), 0, 10)
 	
 
 	

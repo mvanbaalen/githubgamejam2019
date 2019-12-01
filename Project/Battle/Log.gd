@@ -15,6 +15,7 @@ func _ready():
 func load_from_frog_list(frogs):
 	for frog in frogs:
 		var frog_hud = hud_scene.instance()
+		frog_hud.get_node("TextureRect").texture = load("res://img/frog_profile" + str(frog.profile) + ".png")
 		frog_hud.get_node("Label").text = frog.name
 		$FrogList.add_child(frog_hud)
 	
