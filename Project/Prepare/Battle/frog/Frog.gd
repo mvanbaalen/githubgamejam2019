@@ -5,6 +5,9 @@ enum Team  {PLAYER, ENEMY}
 
 export(Team) var team = Team.PLAYER
 
+#Prepare only
+var dragging = false
+
 #TODO: Use timers for this
 var attack_cooldown = 2.0
 var current_cooldown = 0
@@ -20,7 +23,10 @@ func _ready():
 	pass # Replace with function body.
 	
 func _process(delta):
-	if current_state != State.PREPARE:
+	if current_state == State.PREPARE:
+		if dragging:
+			position = get_viewport().get_mouse_position()
+	else:
 		current_cooldown = clamp(current_cooldown - delta, 0, attack_cooldown)
 		if current_target == null || !is_instance_valid(current_target):
 			find_target()
@@ -79,16 +85,20 @@ func attacked():
 func become_dizzy():
 	current_state = State.DIZZY
 	dizzy_time = dizzy_cooldown
-	#TODO: Stop animations, add dizzy animation, etc?
+	$FrontLegsSprite.animation = "Idle"
 	
 func become_undizzy():
 	current_state = State.WAIT
 	current_target = null
-	#TODO Start animations again
+	$FrontLegsSprite.animation = "Walk"
 	
 func fall():
 	print(name + " has fallen!")
 	queue_free()
 
 func _on_Frog_input_event(viewport, event, shape_idx):
-	print(str(event))
+	if current_state == State.PREPARE:
+		if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+			dragging = true
+		if event is InputEventMouseButton and !event.pressed and event.button_index == BUTTON_LEFT:
+			dragging = false

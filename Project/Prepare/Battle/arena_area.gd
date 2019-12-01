@@ -15,4 +15,7 @@ func _ready():
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("frog"):
-		body.fall()
+		if body.current_state == body.State.PREPARE:
+			pass
+		else:
+			body.fall()

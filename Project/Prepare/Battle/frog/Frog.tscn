@@ -65,6 +65,7 @@ use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 1 )
 animation = "Walk"
+frame = 1
 playing = true
 
 [node name="BackLegsSprite" type="AnimatedSprite" parent="."]
@@ -84,7 +85,7 @@ use_parent_material = true
 rotation = -1.5708
 frames = SubResource( 4 )
 animation = "Idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,4 +1,4 @@
-extends TextureRect
+extends Sprite
 
 # Declare member variables here. Examples:
 var tick = 0
