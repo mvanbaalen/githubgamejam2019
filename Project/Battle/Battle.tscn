@@ -51,7 +51,7 @@ script = ExtResource( 5 )
 
 [node name="BadFrog" parent="Arena/Frogs" instance=ExtResource( 6 )]
 modulate = Color( 1, 0.470588, 0.470588, 1 )
-position = Vector2( 657.326, 357.837 )
+position = Vector2( 559.107, 520.674 )
 team = 1
 
 [node name="StartButton" type="Button" parent="."]
