@@ -5,8 +5,7 @@
 [ext_resource path="res://Battle/lillypad.tres" type="Texture" id=3]
 [ext_resource path="res://Battle/LillypadShape.gd" type="Script" id=4]
 
-
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 300.0
 
 [node name="Arena" type="CenterContainer"]
@@ -20,7 +19,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="LillypadShape" type="Polygon2D" parent="."]
 color = Color( 0, 1, 0.25098, 1 )
@@ -28,4 +27,5 @@ texture = ExtResource( 3 )
 texture_offset = Vector2( 0, -300 )
 polygon = PoolVector2Array( -242.224, -170.989, -130.322, -127.565, -178.757, -234.456, -110.28, -277.881, 25.0049, -299.594, 170.311, -244.477, 265.511, -135.916, 293.904, 37.7834, 215.406, 209.812, 33.3558, 293.321, -101.929, 279.96, -203.81, 221.504, -268.947, 124.633, -299.011, 21.0816, -292.33, -65.7679, -270.617, -129.235 )
 script = ExtResource( 4 )
+
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_Area2D_body_exited"]

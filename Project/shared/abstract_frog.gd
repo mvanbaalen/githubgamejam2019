@@ -25,4 +25,4 @@ var size = 10
 
 func _init():
 	name = get_random_name()
-	print("My name is " + name)
+	

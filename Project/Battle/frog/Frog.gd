@@ -5,6 +5,8 @@ enum Team  {PLAYER, ENEMY}
 
 export(Team) var team = Team.PLAYER
 
+var stats # Comes from the Abstract Frog
+
 #Prepare only
 var dragging = false
 
