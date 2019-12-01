@@ -14,4 +14,7 @@ func _ready():
 
 func _on_StartButton_pressed():
 	for frog in $Frogs.get_children():
+		if !frog.ready_to_fight():
+			return
+	for frog in $Frogs.get_children():
 		frog.start_battle()

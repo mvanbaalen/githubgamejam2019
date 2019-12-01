@@ -4,30 +4,15 @@
 code = "shader_type canvas_item;
 render_mode unshaded;
 
-uniform vec3 RED = vec3(1.0,0.0,0.0);
-uniform vec3 GREEN = vec3(0.0,1.0,0.0);
-uniform vec3 BLUE = vec3(0.0,0.0,1.0);
-uniform vec3 WHITE = vec3(1.0,1.0,1.0);
-uniform vec3 BLACK = vec3(0.0,0.0,0.0);
-
 uniform float period = 0.1;
 
 void fragment()
 {
 	COLOR = texture(TEXTURE,UV);
-	COLOR.rgb -=0.99999;
-	COLOR.rgb *= 100000.0;
-	COLOR.r = max(COLOR.r,0.0);
-	COLOR.g = max(COLOR.g,0.0);
-	COLOR.b = max(COLOR.b,0.0);
-	COLOR.r = min(COLOR.r,1.0);
-	COLOR.g = min(COLOR.g,1.0);
-	COLOR.b = min(COLOR.b,1.0);
-	if(COLOR.rgb == RED){COLOR.rgb += RED*sin(TIME);}
-	if(COLOR.rgb == GREEN){COLOR.rgb += RED*sin(2.0*TIME);}
-	if(COLOR.rgb == BLUE){COLOR.rgb += RED*sin(2.0*TIME);}
-	if(COLOR.rgb == WHITE){COLOR.rgb += vec3(0.0,0.0,0.0);}
-	//if(COLOR.rgb == BLACK){COLOR.rgb += vec3(0.5,0.5,1.0);}
+	if(UV.y>0.8)
+	{
+		COLOR.a = max(COLOR.a-(UV.y),0.0);
+	}
 	//COLOR.g = COLOR.g-COLOR.b;
 }
 
@@ -37,10 +22,5 @@ void vertex() {
 
 [resource]
 shader = SubResource( 1 )
-shader_param/RED = Vector3( 1, 0, 0 )
-shader_param/GREEN = Vector3( 0, 1, 0 )
-shader_param/BLUE = Vector3( 0, 0, 1 )
-shader_param/WHITE = Vector3( 1, 1, 1 )
-shader_param/BLACK = Vector3( 0, 0, 0 )
 shader_param/period = 0.1
 

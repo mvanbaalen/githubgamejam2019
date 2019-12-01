@@ -7,9 +7,13 @@ export(Team) var team = Team.PLAYER
 
 var stats # Comes from the Abstract Frog
 
+onready var FrogList = get_parent()
+onready var ArenaArea = FrogList.get_parent()
+onready var BattleScene = ArenaArea.get_parent()
+
 #Prepare only
 var dragging = false
-var legal_position = false
+var legal_position
 
 #TODO: Use timers for this
 var attack_cooldown = 2.0
@@ -23,7 +27,9 @@ var current_target = null
 export var speed = 100
 
 func _ready():
-	pass # Replace with function body.
+	if team == Team.PLAYER:
+		modulate = Color(1,0,0)
+		legal_position = false
 	
 func _process(delta):
 	if current_state == State.PREPARE:
@@ -65,7 +71,7 @@ func start_battle():
 	current_state = State.WAIT
 	
 func find_target():
-	current_target = get_parent().closest_enemy(self)
+	current_target = FrogList.closest_enemy(self)
 	current_state = State.MOVING
 	
 func can_attack(target):
@@ -112,12 +118,12 @@ func fall():
 	# TODO Animations and etc.
 	current_state = State.FALLEN
 	visible = false
-	if get_parent().check_victory():
+	if FrogList.check_victory():
 		# The opposite team of the one that fell won
 		if team == Team.PLAYER:
-			print("The enemy team won :(")
+			BattleScene.victory(Team.ENEMY)
 		else:
-			print("The player team won!!!")
+			BattleScene.victory(Team.PLAYER)
 
 func _on_Frog_input_event(viewport, event, shape_idx):
 	if current_state == State.PREPARE:
@@ -130,10 +136,14 @@ func _on_Frog_input_event(viewport, event, shape_idx):
 func undrag():
 	dragging = false
 	if ($Overlap.get_overlapping_bodies().size() == 1
-	and $Overlap.overlaps_area(get_parent().get_parent().get_node("Area2D"))):
+	and $Overlap.overlaps_area(ArenaArea.get_node("Area2D"))):
 		# Overlaps with only self and the lilypad, this is gross
 		legal_position = true
+		modulate = Color(1,1,1)
 	else:
 		legal_position = false
-	print("I can be here: " + str(legal_position))
+		modulate = Color(1,0,0)
+		
+func ready_to_fight():
+	return (team == Team.PLAYER and legal_position) or (team == Team.ENEMY)
 		
