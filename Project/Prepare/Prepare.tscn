@@ -81,5 +81,4 @@ scene_to_load = "res://Battle/Battle.tscn"
 
 [node name="RetireButton" parent="." instance=ExtResource( 6 )]
 custom_styles/focus = SubResource( 3 )
-
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
